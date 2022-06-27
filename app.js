@@ -5,21 +5,24 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
-const indexRouter = require("./routes/index");
-const artistRouter = require("./routes/artists");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const indexRouter = require("./routes/index");
+const artistRouter = require("./routes/artists");
+const artworkRouter = require("./routes/artworks");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
+
 app.use("/", indexRouter);
 app.use("/artists", artistRouter);
+app.use("/artworks", artworkRouter);
 
 mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;

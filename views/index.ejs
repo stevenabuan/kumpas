@@ -1,1 +1,7 @@
-MIddle
+<h2>Recently Added</h2>
+
+<div>
+  <% artworks.forEach(artwork => { %>
+  <img height="150" width="100" src="<%= artwork.coverImagePath %>" />
+  <% }) %>
+</div>
