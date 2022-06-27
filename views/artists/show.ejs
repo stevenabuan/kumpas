@@ -1,0 +1,8 @@
+<h2><%= artist.name %></h2>
+<a href="/artists/<%= artist.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/artists/${artist.id}` }) %> <% if
+(artworksByArtist.length > 0) { %>
+<h2>Artworks By Artist</h2>
+<% artworksByArtist.forEach(artwork => { %>
+<img height="300" width="300" src="<%= artwork.coverImagePath %>" />
+<% }) %> <% } %>

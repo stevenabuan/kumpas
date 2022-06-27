@@ -5,9 +5,10 @@
 // );
 
 // FilePond.setOptions({
-//     stylePanelAspectRatio: 150 / 100,
-//   imageResizeTargetWidth: 100,
-//   imageResizeTargetHeight: 150,
+//     stylePanelAspectRatio: 50 / 50,
+//     imageResizeTargetWidth: 1000,
+//     imageResizeTargetHeight: 1000,
+//     imageResizeMode: "force",
 // });
 
 // FilePond.parse(document.body);
