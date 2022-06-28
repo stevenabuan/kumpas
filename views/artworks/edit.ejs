@@ -1,0 +1,7 @@
+<h2>Edit Artwork</h2>
+
+<form action="/artworks/<%= artwork.id %>?_method=PUT" method="POST">
+  <%- include('form_fields') %>
+  <a href="/artworks">Cancel</a>
+  <button type="submit">Update</button>
+</form>

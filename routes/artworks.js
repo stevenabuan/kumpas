@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Artwork = require("../models/artwork");
 const Artist = require("../models/artist");
+// const artwork = require("../models/artwork");
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
 // All Artworks Route
@@ -45,22 +46,99 @@ router.post("/", async (req, res) => {
 
   try {
     const newArtwork = await artwork.save();
-    // res.redirect(`artworks/${newArtwork.id}`);
-    res.redirect("artworks");
+    res.redirect(`artworks/${newArtwork.id}`);
   } catch {
     renderNewPage(res, artwork, true);
   }
 });
 
+// Show Artwork Route
+router.get("/:id", async (req, res) => {
+  try {
+    const artwork = await Artwork.findById(req.params.id)
+      .populate("artist")
+      .exec();
+    res.render("artworks/show", { artwork: artwork });
+  } catch {
+    res.redirect("/");
+  }
+});
+
+// Edit Artwork Route
+router.get("/:id/edit", async (req, res) => {
+  try {
+    const artwork = await Artwork.findById(req.params.id);
+    renderEditPage(res, artwork);
+  } catch {
+    res.redirect("/");
+  }
+});
+
+// Update Artwork Route
+router.put("/:id", async (req, res) => {
+  let artwork;
+  try {
+    artwork = await Artwork.findById(req.params.id);
+    artwork.title = req.body.title;
+    artwork.artist = req.body.artist;
+    artwork.publishDate = new Date(req.body.publishDate);
+    artwork.description = req.body.description;
+    if (req.body.artworkImage != null && req.body.artworkImage !== "") {
+      saveCover(artwork, req.body.artworkImage);
+    }
+    await artwork.save();
+    res.redirect(`/artworks/${artwork.id}`);
+  } catch {
+    if (artwork != null) {
+      renderEditPage(res, artwork, true);
+    } else {
+      redirect("/");
+    }
+  }
+});
+
+// Delete Artwork Page
+router.delete("/:id", async (req, res) => {
+  let artwork;
+  try {
+    artwork = await Artwork.findById(req.params.id);
+    await artwork.remove();
+    res.redirect("/artworks");
+  } catch {
+    if (artwork != null) {
+      res.render("artworks/show", {
+        artwork,
+        errorMessage: "Could not remove artwork",
+      });
+    } else {
+      res.redirect("/");
+    }
+  }
+});
+
 async function renderNewPage(res, artwork, hasError = false) {
+  renderFormPage(res, artwork, "new", hasError);
+}
+
+async function renderEditPage(res, artwork, hasError = false) {
+  renderFormPage(res, artwork, "edit", hasError);
+}
+
+async function renderFormPage(res, artwork, form, hasError = false) {
   try {
     const artists = await Artist.find({});
     const params = {
-      artists: artists,
-      artwork: artwork,
+      artists,
+      artwork,
     };
-    if (hasError) params.errorMessage = "Error creating artwork";
-    res.render("artworks/new", params);
+    if (hasError) {
+      if (form === "edit") {
+        params.errorMessage = "Error Updating Artwork";
+      } else {
+        params.errorMessage = "Error Creating Artwork";
+      }
+    }
+    res.render(`artworks/${form}`, params);
   } catch {
     res.redirect("/artworks");
   }
