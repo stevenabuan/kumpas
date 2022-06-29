@@ -21,12 +21,17 @@
       value="<%= searchOptions.publishedBefore %>"
     />
   </div>
-  <button type="submit">Search</button>
+  <button class="btn btn-warning my-3" type="submit">Search</button>
 </form>
 <div>
   <% artworks.forEach(artwork => { %>
   <a href="/artworks/<%= artwork.id %>">
-    <img height="300" width="300" src="<%= artwork.coverImagePath %>" />
+    <img
+      class="mx-2 my-2"
+      height="300"
+      width="300"
+      src="<%= artwork.coverImagePath %>"
+    />
   </a>
   <% }) %>
 </div>
