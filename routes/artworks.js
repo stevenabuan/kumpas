@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Artwork = require("../models/artwork");
 const Artist = require("../models/artist");
-// const artwork = require("../models/artwork");
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
 // All Artworks Route
