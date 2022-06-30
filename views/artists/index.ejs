@@ -1,14 +1,33 @@
-<h2>Search Artists</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-4" style="height: 75vh">
+    <h2 class="my-5 fs-4">Search Artists</h2>
 
-<form action="/artists" method="GET">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" value="<%= searchOptions.name %>" />
-  <button type="submit">Search</button>
-</form>
-<br />
-<% artists.forEach(artist => { %>
-<div><%= artist.name %></div>
-<a href="/artists/<%= artist.id %>"> View</a>
-<a href="/artists/<%= artist.id %>/edit"> Edit</a>
-<%- include('../partials/deleteForm', { url: `/artists/${artist.id}` }) %> <% })
-%>
+    <form class="mb-5" action="/artists" method="GET">
+      <label class="form-label" for="name">Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="name"
+        id="name"
+        value="<%= searchOptions.name %>"
+      />
+      <button class="btn btn-warning mt-2" type="submit">Search</button>
+    </form>
+
+    <% artists.forEach(artist => { %>
+    <div><%= artist.name %></div>
+    <div>
+      <a class="text-decoration-none" href="/artists/<%= artist.id %>"> View</a>
+      |
+      <a class="text-decoration-none" href="/artists/<%= artist.id %>/edit">
+        Edit</a
+      >
+      <div class="mb-3">
+        <%- include('../partials/deleteForm', { url: `/artists/${artist.id}` })
+        %>
+      </div>
+
+      <% }) %>
+    </div>
+  </div>
+</div>

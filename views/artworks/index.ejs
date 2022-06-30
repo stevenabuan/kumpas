@@ -1,44 +1,54 @@
-<h2 class="my-5 fs-4">Search Artwork</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-4">
+    <h2 class="my-5 fs-4">Search Artwork</h2>
 
-<form action="/artworks" method="GET">
-  <div>
-    <label class="form-label">Title</label>
-    <input
-      class="form-control"
-      type="text"
-      name="title"
-      value="<%= searchOptions.title %>"
-    />
+    <form action="/artworks" method="GET">
+      <div>
+        <label class="form-label">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          value="<%= searchOptions.title %>"
+        />
+      </div>
+      <div>
+        <label class="form-label">Published After</label>
+        <input
+          class="form-control"
+          type="date"
+          name="publishedAfter"
+          value="<%= searchOptions.publishedAfter %>"
+        />
+      </div>
+      <div>
+        <label class="form-label">Published Before</label>
+        <input
+          class="form-control"
+          type="date"
+          name="publishedBefore"
+          value="<%= searchOptions.publishedBefore %>"
+        />
+      </div>
+      <button class="btn btn-warning my-3" type="submit">Search</button>
+    </form>
   </div>
-  <div>
-    <label class="form-label">Published After</label>
-    <input
-      class="form-control"
-      type="date"
-      name="publishedAfter"
-      value="<%= searchOptions.publishedAfter %>"
-    />
+</div>
+
+<div class="container">
+  <div class="row">
+    <% artworks.forEach(artwork => { %>
+    <div class="col-md-6 col-lg-3">
+      <a href="/artworks/<%= artwork.id %>">
+        <img
+          class="img-index mx-2 my-4"
+          height="300"
+          width="300"
+          src="<%= artwork.coverImagePath %>"
+        />
+      </a>
+    </div>
+
+    <% }) %>
   </div>
-  <div>
-    <label class="form-label">Published Before</label>
-    <input
-      class="form-control"
-      type="date"
-      name="publishedBefore"
-      value="<%= searchOptions.publishedBefore %>"
-    />
-  </div>
-  <button class="btn btn-warning my-3" type="submit">Search</button>
-</form>
-<div>
-  <% artworks.forEach(artwork => { %>
-  <a href="/artworks/<%= artwork.id %>">
-    <img
-      class="mx-2 my-2"
-      height="300"
-      width="300"
-      src="<%= artwork.coverImagePath %>"
-    />
-  </a>
-  <% }) %>
 </div>

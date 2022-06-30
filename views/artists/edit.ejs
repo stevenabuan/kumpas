@@ -1,7 +1,11 @@
-<h2>Edit Artist</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-4" style="height: 75vh">
+    <h2 class="my-5 fs-4">Edit Artist</h2>
 
-<form action="/artists/<%= artist.id %>?_method=PUT" method="POST">
-  <%- include('form_fields') %>
-  <a href="/artists/<%= artist.id %>">Cancel</a>
-  <button type="submit">Update</button>
-</form>
+    <form action="/artists/<%= artist.id %>?_method=PUT" method="POST">
+      <%- include('form_fields') %>
+      <a class="btn btn-light mt-2" href="/artists/<%= artist.id %>">Cancel</a>
+      <button class="btn btn-warning mt-2" type="submit">Update</button>
+    </form>
+  </div>
+</div>

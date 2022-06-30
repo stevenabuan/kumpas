@@ -1,7 +1,13 @@
-<h2>New Artist</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-4" style="height: 75vh">
+    <h2 class="my-5 fs-4">New Artist</h2>
 
-<form action="/artists" method="POST">
-  <%- include("form_fields") %>
-  <a href="/artists">Cancel</a>
-  <button type="submit">Create</button>
-</form>
+    <form action="/artists" method="POST">
+      <div class="col-lg-12"><%- include("form_fields") %></div>
+      <a class="btn btn-light mt-2" href="/artists">Cancel</a>
+      <button class="btn btn-warning submit-btn mt-2" type="submit">
+        Create
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,7 +1,11 @@
-<h2 class="my-5 fs-4">New Artwork</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-6">
+    <h2 class="my-5 fs-4">New Artwork</h2>
 
-<form action="/artworks" method="POST">
-  <%- include("form_fields") %>
-  <a class="btn btn-light mt-2" href="/artworks">Cancel</a>
-  <button class="btn btn-warning mt-2" type="submit">Create</button>
-</form>
+    <form action="/artworks" method="POST">
+      <%- include("form_fields") %>
+      <a class="btn btn-light mt-3 mb-5" href="/artworks">Cancel</a>
+      <button class="btn btn-warning mt-3 mb-5" type="submit">Create</button>
+    </form>
+  </div>
+</div>

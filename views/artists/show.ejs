@@ -1,13 +1,33 @@
-<h2><%= artist.name %></h2>
+<div class="container">
+  <div class="text-center">
+    <h2 class="mt-5 fs-4 ms-2"><%= artist.name %></h2>
 
-<a href="/artists/<%= artist.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', { url: `/artists/${artist.id}` }) %> <% if
-(artworksByArtist.length > 0) { %>
+    <div class="d-flex justify-content-center">
+      <a
+        class="btn btn-sm btn-success text-decoration-none ms-2 me-2"
+        href="/artists/<%= artist.id %>/edit"
+        >Edit</a
+      >
+      | <%- include('../partials/deleteForm', { url: `/artists/${artist.id}` })
+      %> <% if (artworksByArtist.length > 0) { %>
+    </div>
 
-<h2>Artworks By Artist</h2>
+    <h2 class="my-3 ms-2 fs-4">Artworks By Artist</h2>
+  </div>
 
-<% artworksByArtist.forEach(artwork => { %>
-<a href="/artworks/<%= artwork.id %>">
-  <img height="300" width="300" src="<%= artwork.coverImagePath %>" />
-</a>
-<% }) %> <% } %>
+  <div class="row">
+    <% artworksByArtist.forEach(artwork => { %>
+    <div class="col-md-6 col-lg-3">
+      <a href="/artworks/<%= artwork.id %>">
+        <img
+          class="img-index mx-2 mb-4"
+          height="300"
+          width="300"
+          src="<%= artwork.coverImagePath %>"
+        />
+      </a>
+    </div>
+
+    <% }) %> <% } %>
+  </div>
+</div>
