@@ -1,33 +1,33 @@
 
-<div>
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" value="<%= artwork.title %>" />
-</div>
-
-<div>
-    <label>Artist</label>
-    <select name="artist">
-        <%   artists.forEach(artist => { %>
-            <%  if (artist.id === artwork.artist) { %>  
-                <option selected label="<%= artist.name %>" value="<%= artist.id %>" />
-            <%  } else { %> 
-                <option label="<%= artist.name %>" value="<%= artist.id %>" />
-            <%  } %> 
-        <%  }) %> 
-    </select>
-</div>
-
-<div>
-    <label >Publish Date</label>
-    <input type="date" name="publishDate" value="<%= artwork.publishDate == null ? "": artwork.publishDate.toISOString().split("T")[0] %>" >
-</div>
-
-<div>
-    <label >Artwork</label>
-    <input type="file" name="artworkImage"/>
-</div>
-
-<div>
-    <label >Description</label>
-    <textarea name="description"><%= artwork.description %> </textarea>
-</div>
+    <div>
+        <label class="form-label" for="title">Title:</label>
+        <input class="form-control" type="text" id="title" name="title" value="<%= artwork.title %>" />
+    </div>
+    
+    <div>
+        <label class="form-label">Artist:</label>
+        <select class="form-control" name="artist">
+            <%   artists.forEach(artist => { %>
+                <%  if (artist.id === artwork.artist) { %>  
+                    <option selected label="<%= artist.name %>" value="<%= artist.id %>" />
+                <%  } else { %> 
+                    <option label="<%= artist.name %>" value="<%= artist.id %>" />
+                <%  } %> 
+            <%  }) %> 
+        </select>
+    </div>
+    
+    <div>
+        <label class="form-label">Publish Date:</label>
+        <input class="form-control" type="date" name="publishDate" value="<%= artwork.publishDate == null ? "": artwork.publishDate.toISOString().split("T")[0] %>" >
+    </div>
+    
+    <div>
+        <label class="form-label">Upload Artwork:</label>
+        <input class="form-control" type="file" name="artworkImage"/>
+    </div>
+    
+    <div>
+        <label class="form-label">Description:</label>
+        <textarea class="form-control" name="description" rows="5"><%= artwork.description %> </textarea>
+    </div>

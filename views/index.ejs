@@ -1,17 +1,19 @@
-<h3 class="text-center">Recently Added</h3>
+<h5 class="text-center py-5">Recently Added</h5>
 
-<div class="d-flex flex-wrap align-items-center">
-  <% artworks.forEach(artwork => { %>
-  <div class="col">
-    <a href="/artworks/<%= artwork.id %>">
-      <img
-        class="mx-2 my-2"
-        height="300"
-        width="300"
-        src="<%= artwork.coverImagePath %>"
-      />
-    </a>
+<div class="container">
+  <div class="row">
+    <% artworks.forEach(artwork => { %>
+    <div class="col-md-6 col-lg-3">
+      <a href="/artworks/<%= artwork.id %>">
+        <img
+          class="mx-2 mb-4"
+          height="300"
+          width="300"
+          src="<%= artwork.coverImagePath %>"
+        />
+      </a>
+    </div>
+
+    <% }) %>
   </div>
-
-  <% }) %>
 </div>

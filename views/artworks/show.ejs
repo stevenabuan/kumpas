@@ -1,10 +1,28 @@
-<h2><%= artwork.title %></h2>
+<div container>
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <img width="600" height="600" src="<%= artwork.coverImagePath %>" />
+    </div>
+    <div class="col-lg-6">
+      <h2 class="fs-4 my-5"><%= artwork.title %></h2>
 
-<img width="500" height="500" src="<%= artwork.coverImagePath %>" />
-<div>Artist: <%= artwork.artist.name %></div>
-<div>Published: <%= artwork.publishDate.toDateString() %></div>
-<div>Description: <%= artwork.description %></div>
+      <div>Artist: <%= artwork.artist.name %></div>
+      <div>Published: <%= artwork.publishDate.toDateString() %></div>
+      <div>Description: <%= artwork.description %></div>
 
-<a href="/artworks/<%= artwork.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', { url: `/artworks/${artwork.id}` }) %>
-<a href="/artists/<%= artwork.artist.id %>">View Artist</a>
+      <div>
+        <a class="text-decoration-none" href="/artists/<%= artwork.artist.id %>"
+          >View Artist</a
+        >
+        |
+        <a class="text-decoration-none" href="/artworks/<%= artwork.id %>/edit"
+          >Edit</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%- include('../partials/deleteForm', { url: `/artworks/${artwork.id}` }) %>
+  </div>
+</div>

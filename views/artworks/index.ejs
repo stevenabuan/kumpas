@@ -1,21 +1,28 @@
-<h2>Search Artwork</h2>
+<h2 class="my-5 fs-4">Search Artwork</h2>
 
 <form action="/artworks" method="GET">
   <div>
-    <label>Title</label>
-    <input type="text" name="title" value="<%= searchOptions.title %>" />
+    <label class="form-label">Title</label>
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      value="<%= searchOptions.title %>"
+    />
   </div>
   <div>
-    <label>Published After</label>
+    <label class="form-label">Published After</label>
     <input
+      class="form-control"
       type="date"
       name="publishedAfter"
       value="<%= searchOptions.publishedAfter %>"
     />
   </div>
   <div>
-    <label>Published Before</label>
+    <label class="form-label">Published Before</label>
     <input
+      class="form-control"
       type="date"
       name="publishedBefore"
       value="<%= searchOptions.publishedBefore %>"
