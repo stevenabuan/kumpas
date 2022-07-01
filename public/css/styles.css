@@ -83,3 +83,10 @@ ul,
     height: 300px;
   }
 }
+
+@media (max-width: 376px) {
+  .img-index {
+    width: 320px;
+    height: 300px;
+  }
+}
