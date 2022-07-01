@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="height: 100vh">
   <div class="text-center">
     <h2 class="mt-5 fs-4 ms-2"><%= artist.name %></h2>
 
@@ -15,7 +15,7 @@
     <h2 class="my-3 ms-2 fs-4">Artworks By Artist</h2>
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <% artworksByArtist.forEach(artwork => { %>
     <div class="col-md-6 col-lg-3">
       <a href="/artworks/<%= artwork.id %>">

@@ -1,8 +1,6 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Ubuntu:wght@300&display=swap");
 
 ul,
-h5,
 .title {
   list-style: none;
   font-family: "Montserrat Alternates", sans-serif;
@@ -82,5 +80,6 @@ h5,
 @media (max-width: 576px) {
   .img-index {
     width: 350px;
+    height: 300px;
   }
 }

@@ -1,15 +1,14 @@
-<div style="height: 80vh">
-  <div class="row mt-5">
-    <div class="col-lg-6 mx-auto">
-      <img
-        class="ms-3"
-        width="600"
-        height="600"
-        src="<%= artwork.coverImagePath %>"
-      />
-    </div>
-    <div class="col-lg-6">
-      <h2 class="fs-4 my-5"><%= artwork.title %></h2>
+<div class="container" style="height: 100vh">
+  <div class="row mt-5 justify-content-center">
+    <img
+      class="img-index col-lg-6"
+      width="600"
+      height="600"
+      src="<%= artwork.coverImagePath %>"
+    />
+
+    <div class="col-lg-6 px-5">
+      <h2 class="fs-4 mt-5 mb-3"><%= artwork.title %></h2>
 
       <div>Artist: <%= artwork.artist.name %></div>
       <div>Published: <%= artwork.publishDate.toDateString() %></div>

@@ -1,9 +1,11 @@
-<div class="container">
-  <h2 class="my-5 fs-4">Edit Artwork</h2>
+<div class="row d-flex flex-column align-items-center mt-5">
+  <div class="text-center px-5 col-lg-6" style="height: 75vh">
+    <h2 class="my-5 fs-4">Edit Artwork</h2>
 
-  <form action="/artworks/<%= artwork.id %>?_method=PUT" method="POST">
-    <%- include('form_fields') %>
-    <a class="btn btn-light mt-2" href="/artworks">Cancel</a>
-    <button class="btn btn-warning mt-2" type="submit">Update</button>
-  </form>
+    <form action="/artworks/<%= artwork.id %>?_method=PUT" method="POST">
+      <div class="col-lg-12"><%- include('form_fields') %></div>
+      <a class="btn btn-light mt-2" href="/artworks">Cancel</a>
+      <button class="btn btn-warning mt-2" type="submit">Update</button>
+    </form>
+  </div>
 </div>
